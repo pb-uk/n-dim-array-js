@@ -1,7 +1,7 @@
 // src/index.ts
 
-import { NDimArray } from './n-dim-array.js';
+import { NdaF64 } from './nda/nda-f64.js';
 
 export const getArray = (shape: [1]) => {
-  return new NDimArray(shape);
+  return new NdaF64(shape);
 };

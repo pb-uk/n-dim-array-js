@@ -14,16 +14,19 @@
   "module": "esm/dist/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist esm/dist cjs/dist types && tsc -p tsconfig-esm.json && tsc -p tsconfig-types.json && rollup -c",
+    "build": "rimraf dist esm/dist cjs/dist types && npm run build:esm && npm run build:types && npm run build:rollup",
+    "build:esm": "tsc -p tsconfig-esm.json",
+    "build:types": "tsc -p tsconfig-types.json",
+    "build:rollup": "rollup -c",
     "lint": "prettier --check . && eslint .",
     "lint:fix": "prettier --write . && eslint --fix .",
-    "test": "mocha -r ts-node/register test/**/*.{spec,test}.ts"
+    "test:unit": "mocha -r ts-node/register test/**/*.{spec,test}.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pb-uk/ndarray-js.git"
   },
-  "author": "https://github.com/pb-uk/",
+  "author": "pbuk https://github.com/pb-uk/",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pb-uk/ndarray-js/issues"
@@ -33,6 +36,7 @@
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/chai": "^4.2.22",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "camelcase": "^6.2.0",
