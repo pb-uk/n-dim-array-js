@@ -1,3 +1,5 @@
 // src/nda-float-array.ts
 
-export class NdaFloatArray {}
+import { NdaTypedArray } from './nda-typed-array';
+
+export class NdaFloatArray extends NdaTypedArray {}

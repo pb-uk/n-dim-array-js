@@ -1,3 +1,5 @@
 // src/nda-typed-array.ts
 
-export class NdaTypedArray {}
+import { NDimArray } from '../n-dim-array';
+
+export class NdaTypedArray extends NDimArray {}
