@@ -3,17 +3,21 @@
   "description": "N-dimensional arrays in JavaScript.",
   "version": "0.0.0-dev",
   "files": [
+    "cjs",
     "dist",
-    "src"
+    "esm",
+    "src",
+    "types"
   ],
-  "type": "module",
-  "main": "dist/n-dim-array.js",
+  "browser": "dist/n-dim-array.js",
+  "main": "cjs/dist/index.js",
   "module": "esm/dist/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "build": "rimraf dist esm/dist types && tsc -p tsconfig-dist.json && tsc -p tsconfig-types.json && rollup -c",
+    "build": "rimraf dist esm/dist cjs/dist types && tsc -p tsconfig-esm.json && tsc -p tsconfig-types.json && rollup -c",
     "lint": "prettier --check . && eslint .",
     "lint:fix": "prettier --write . && eslint --fix .",
-    "test": "mocha --loader ts-node/esm test/**/*.{spec,test}.ts"
+    "test": "mocha -r ts-node/register test/**/*.{spec,test}.ts"
   },
   "repository": {
     "type": "git",
@@ -39,6 +43,7 @@
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.60.0",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }

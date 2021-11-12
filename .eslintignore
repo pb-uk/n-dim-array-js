@@ -2,6 +2,6 @@
 
 # Built from source.
 /dist/
-/esm/dist/
 /types/
-
+/cjs/dist/
+/esm/dist/

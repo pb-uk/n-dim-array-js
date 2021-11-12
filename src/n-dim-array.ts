@@ -29,6 +29,10 @@ export class NDimArray {
     this.buffer = createBuffer(shape);
   }
 
+  throwError() {
+    throw new Error('This is not the method you are looking for');
+  }
+
   getIndexOf(indices: number[]) {
     let index = 0;
     for (let i = 0; i < this.shape.length; ++i) {
