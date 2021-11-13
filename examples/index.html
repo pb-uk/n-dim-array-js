@@ -1,8 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+
+<div id="app">Loading</div>
+
+<script id="app-template" type="text/template">
+  {{ resultArray.toNestedArray() }}
+  <button @click="step" :disabled="current.done">iterate</button>
+  <div>
+    <span v-if="current.value">{{ current.value}}</span>
+    <span v-if="current.done">Done!</span>
+  </div>
+</script>
+
 <script src="../dist/n-dim-array.js"></script>
 
 <script>
-  console.log(window);
-  console.log(NDimArray);
+  const { createApp, ref } = Vue;
   const { getArray } = NDimArray;
-  getArray().throwError();
+
+  createApp({
+    template: '#app-template',
+    setup() {
+      const current = ref({});
+      const resultArray = getArray([2, 3, 4]);
+      const iterator = resultArray.getGenerator();
+      const step = () => {
+        current.value = iterator.next();
+      };
+      resultArray.iAddScalarUnsafe(22);
+      resultArray.setItemUnsafe([1, 1, 1], 123);
+      return {
+        resultArray,
+        current,
+        step,
+      };
+    },
+  }).mount('#app');
 </script>

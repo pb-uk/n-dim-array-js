@@ -40,6 +40,13 @@ export class NDimArray {
   }
 
   /**
+   * The array's shape.
+   */
+  public get shape() {
+    return this._shape;
+  }
+
+  /**
    * The strides relating to the array's shape.
    */
   public get strides() {
